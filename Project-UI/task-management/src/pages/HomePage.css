@@ -87,3 +87,28 @@
   text-decoration: line-through;
   color: gray;
 }
+
+.card {
+  background: rgb(253, 254, 255);
+  height: 400px;
+  min-height: 300px;
+  padding: 1.25rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.flex-row {
+  display: flex;
+  align-items: space-between;
+  justify-content: space-between;
+}
+
+.half {
+  width: 49%;
+  align-content: 'center';
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+}

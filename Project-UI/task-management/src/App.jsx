@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState,useEffect } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
@@ -9,6 +9,21 @@ import Dashboardpage from './pages/DashBoardPage.jsx'
 import Header from "./components/Header";
 
 function App() {
+
+  const [tasks, setTasks] = useState([]);
+
+  useEffect(() => {
+    const cachedTasks = localStorage.getItem("tasks");
+    if (cachedTasks) {
+      setTasks(JSON.parse(cachedTasks));
+    }
+  }, []);
+
+
+  // Save to cache whenever tasks change
+  useEffect(() => {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+  }, [tasks]);
   
   return (
     <>
@@ -27,8 +42,8 @@ function App() {
 
       {/* Page Routes */}
       <Routes>
-        <Route path="/" element={<Homepage />} />
-        <Route path="/dashboard" element={<Dashboardpage />} />
+        <Route path="/" element={<Homepage tasks={tasks} setTasks={setTasks}  />} />
+        <Route path="/dashboard" element={<Dashboardpage tasks={tasks}/>} />
       </Routes>
     </Router>
 

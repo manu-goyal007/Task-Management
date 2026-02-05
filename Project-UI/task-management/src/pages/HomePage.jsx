@@ -1,8 +1,8 @@
 import { useState,useEffect } from "react";
 import "./HomePage.css"
 
-function Homepage() {
-  const [tasks, setTasks] = useState([]);
+function Homepage({ tasks, setTasks }) {
+  
 
   const [taskId, setTaskId] = useState("");
   const [taskName, setTaskName] = useState("");
@@ -41,9 +41,9 @@ function Homepage() {
       : task
   ));
     };
-    useEffect(() => {
-  localStorage.setItem("tasks", JSON.stringify(tasks));
-}, [tasks]);
+//     useEffect(() => {
+//   localStorage.setItem("tasks", JSON.stringify(tasks));
+// }, [tasks]);
   return (
     <>
       <div className="container">
@@ -64,9 +64,12 @@ function Homepage() {
             onChange={(e) => setTaskDescription(e.target.value)}
           />
        
+        <div styles={{display:"flex", alignItems: "center",
+    justifyContent: "space-evenly",}}>
 
         <button type="submit">Add Task</button>
         <button type="clear">Clear</button>
+        </div>
       </form>
 
       <hr />
