@@ -112,3 +112,12 @@
   display: flex;
   justify-content: center;
 }
+
+.card-top {
+  background: rgb(253, 254, 255);
+  height: 40px;
+  min-height: 40px;
+  padding: 1.25rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}

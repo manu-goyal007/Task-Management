@@ -6,7 +6,9 @@ import './App.css'
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Homepage from './pages/HomePage.jsx'
 import Dashboardpage from './pages/DashBoardPage.jsx'
+import ManuPage from './pages/ManuPage.jsx' 
 import Header from "./components/Header";
+
 
 function App() {
 
@@ -27,9 +29,16 @@ function App() {
   
   return (
     <>
-      <Header title ="Manu Goyal" />
-      <Header title="Task Management App" />
+    {/* Header */}    
+
       <Router>
+                <Link to="/manu" style={{ textDecoration: 'none' }}>
+      <Header title="Manu Goyal" />
+    </Link>
+
+      <Link to="/" style={{ textDecoration: 'none' }}>
+      <Header title="Task Management App" />
+      </Link>
       {/* Navigation Links */}
       <nav style={{ textAlign:'center',display:'flex',width:'100%',textBox:'text',    alignItems: "center",
     justifyContent: "space-evenly",
@@ -44,6 +53,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Homepage tasks={tasks} setTasks={setTasks}  />} />
         <Route path="/dashboard" element={<Dashboardpage tasks={tasks}/>} />
+        <Route path="/manu" element={<ManuPage/>} />
       </Routes>
     </Router>
 

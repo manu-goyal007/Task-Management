@@ -8,17 +8,20 @@ function Homepage({ tasks, setTasks }) {
   const [taskName, setTaskName] = useState("");
   const [taskDescription, setTaskDescription] = useState("");
   const [taskStatus, setTaskStatus] = useState('');
+  const [taskCreatedate,setTaskCreatedate] = useState("");
 
   const addTask = (e) => {
     e.preventDefault();
 
     if ( !taskName || !taskDescription) return;
+    
 
     const newTask = {
       id: Date.now(),
       name: taskName,
       description: taskDescription,
-      status: taskStatus
+      status: taskStatus,
+      taskCreatedate: new Date().toLocaleDateString()
     };
 
     setTasks([...tasks, newTask]);
@@ -28,6 +31,7 @@ function Homepage({ tasks, setTasks }) {
     setTaskName("");
     setTaskDescription("");
     setTaskStatus("");
+    setTaskCreatedate("");
   };
 
   const deleteTask = (id) => {
@@ -88,7 +92,7 @@ function Homepage({ tasks, setTasks }) {
         <tbody>
           {tasks.map((task, index) => (
             <tr key={index}>
-              <td>{task.id}</td>
+              <td>{task.taskCreatedate}</td>
               <td>{task.name}</td>
               <td>{task.description}</td>
                 <td>{task.status ? "Done ✅" : "Pending ⏳"}</td>
